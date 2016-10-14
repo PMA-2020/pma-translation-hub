@@ -21,6 +21,7 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'this_should_be_configur
 @app.route('/')
 def home():
     """Render website's home page."""
+    # return 'Hello world.'
     return render_template('home.html')
 
 
