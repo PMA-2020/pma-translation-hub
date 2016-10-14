@@ -48,7 +48,7 @@ coverage.xml
 # Mac Files
 .DS_Store
 
-# IDE
+# IDE Files
 .idea/
 
 # Local Development
