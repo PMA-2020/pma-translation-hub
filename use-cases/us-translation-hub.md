@@ -30,7 +30,7 @@
 | Priority | 5/5 |
 | Frequency | Once per week |
 
-| Use Case | 5 Editor extracts source text and translations |
+| Use Case | 5 Editor extracts English source text and translations |
 | -------- | ----------------------------- |
 | Scope | PMA Translation Hub |
 | Level | User goal |
@@ -54,3 +54,10 @@
 | Priority | 5/5 |
 | Frequency | Once per month |
 
+| Use Case | 8 Admin adds users |
+| -------- | ----------------------------- |
+| Scope | PMA Translation Hub |
+| Level | User goal |
+| Primary actor | Admin |
+| Priority | 5/5 |
+| Frequency | Once per month |
