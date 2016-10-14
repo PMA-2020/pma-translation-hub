@@ -45,6 +45,12 @@ coverage.xml
 *,cover
 .hypothesis/
 
+# IDE
+.idea/
+
+# Local Development
+Makefile
+
 # Translations
 *.mo
 *.pot
