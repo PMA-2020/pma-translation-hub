@@ -21,5 +21,10 @@
   "bugs": {
     "url": "https://github.com/PMA-2020/pma-translation-hub/issues"
   },
-  "homepage": "https://github.com/PMA-2020/pma-translation-hub#readme"
+  "homepage": "https://github.com/PMA-2020/pma-translation-hub#readme",
+  "dependencies": {
+    "mocha": "^3.1.2",
+    "react": "^15.3.2",
+    "react-bootstrap-table": "^2.5.5"
+  }
 }
