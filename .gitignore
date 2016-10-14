@@ -45,10 +45,15 @@ coverage.xml
 *,cover
 .hypothesis/
 
+#Mac Files
+.DS_Store
+
 # IDE
 .idea/
 
 # Local Development
+dev/archive/
+dev/tasks.rtf
 Makefile
 
 # Translations
