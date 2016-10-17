@@ -56,8 +56,7 @@ coverage.xml
 
 # Local Development
 dev/archive/
-dev/dependencies
-dev/tasks.rtf
+dev/usr
 Makefile
 
 # Translations
