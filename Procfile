@@ -11,7 +11,7 @@ web: gunicorn
 ## Heroku Processes ##
 # TRY THE NEXT LINE NEXT 3
 # !!! FAILED 'app not found'
-web: gunicorn app:app
+# web: gunicorn app:app
 #web: gunicorn app:app --preload
 #web: gunicorn app:app --preload --config app/configuration/gunicorn_config.py
 #init: python db_create.py
