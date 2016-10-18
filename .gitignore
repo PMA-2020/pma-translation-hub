@@ -1,3 +1,18 @@
+# # # # From React-Redux-Boilerplate # # # #
+# *.db
+# .DS_Store
+# venv
+# env
+# __pycache__
+# blog_old.md
+# node_modules
+# .idea/*
+# *.pyc
+# tmp
+# static/dist
+
+
+# # # # From General # # # #
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -11,7 +26,8 @@ __pycache__/
 env/
 build/
 develop-eggs/
-dist/
+# !! Conflicting with Current deployment. Can coment this for now, however will want to use multi-buildpack to build at deployment.
+# dist/
 downloads/
 eggs/
 .eggs/
