@@ -1,3 +1,8 @@
 # Possibly too many workers. 'gevent' marked not installed. 'app' not found.
-#web: gunicorn -w 4 -b 0.0.0.0:$PORT -k gevent app:app
+# web: gunicorn -w 4 -b 0.0.0.0:$PORT -k gevent app:app
 
+# To Test:
+# web: gunicorn gettingstarted.wsgi --log-file -
+
+# To Test: 
+web: gunicorn
