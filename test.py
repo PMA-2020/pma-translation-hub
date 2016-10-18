@@ -1,40 +1,35 @@
-#!/usr/bin/env python
+import pytest
+from basedir import basedir
+import os
+import shutil
+import sys
 
-"""Tests for the Flask Heroku template."""
 
-import unittest
-from app import app
+def main():
+    argv = []
 
+    argv.extend(sys.argv[1:])
 
-class TestApp(unittest.TestCase):
+    pytest.main(argv)
 
-    def setUp(self):
-        self.app = app.test_client()
+    try:
+        os.remove(os.path.join(basedir, '.coverage'))
 
-    def test_home_page_works(self):
-        rv = self.app.get('/')
-        self.assertTrue(rv.data)
-        self.assertEqual(rv.status_code, 200)
+    except OSError:
+        pass
 
-    def test_about_page_works(self):
-        rv = self.app.get('/about/')
-        self.assertTrue(rv.data)
-        self.assertEqual(rv.status_code, 200)
+    try:
+        shutil.rmtree(os.path.join(basedir, '.cache'))
 
-    def test_default_redirecting(self):
-        rv = self.app.get('/about')
-        self.assertEqual(rv.status_code, 301)
+    except OSError:
+        pass
 
-    def test_404_page(self):
-        rv = self.app.get('/i-am-not-found/')
-        self.assertEqual(rv.status_code, 404)
+    try:
+        shutil.rmtree(os.path.join(basedir, 'tests/.cache'))
+    except OSError:
+        pass
 
-    def test_static_text_file_request(self):
-        rv = self.app.get('/robots.txt')
-        self.assertTrue(rv.data)
-        self.assertEqual(rv.status_code, 200)
-        rv.close()
 
 
 if __name__ == '__main__':
-    unittest.main()
+    main()
