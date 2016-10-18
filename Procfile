@@ -1,11 +1,12 @@
+web: gunicorn main:app
 # !!! Possibly too many workers. 'gevent' marked not installed. 'app' not found.
 # web: gunicorn -w 4 -b 0.0.0.0:$PORT -k gevent app:app
 
 # To Test: 1
 # web: gunicorn gettingstarted.wsgi --log-file -
 
-# To Test: 2
-web: gunicorn 
+# FAILED - 'app crashed'
+# web: gunicorn
 
 # Temporarily Borrowed from Just-a-Dash
 ## Heroku Processes ##
