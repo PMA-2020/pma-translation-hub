@@ -1,18 +1,7 @@
-# # # # From React-Redux-Boilerplate # # # #
-# *.db
-# .DS_Store
-# venv
-# env
-# __pycache__
-# blog_old.md
-# node_modules
-# .idea/*
-# *.pyc
-# tmp
-# static/dist
+# Temporarily Disabled
+# !! Conflicting with Current deployment. Can coment this for now, however will want to use multi-buildpack to build at deployment.
+# dist/
 
-
-# # # # From General # # # #
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -21,13 +10,17 @@ __pycache__/
 # C extensions
 *.so
 
+# Local DB's
+*.db
+
 # Distribution / packaging - Python#
 .Python
+.env
 env/
+venv/
+ENV/
 build/
 develop-eggs/
-# !! Conflicting with Current deployment. Can coment this for now, however will want to use multi-buildpack to build at deployment.
-# dist/
 downloads/
 eggs/
 .eggs/
@@ -41,6 +34,7 @@ var/
 *.egg
 
 # Distribution / packaging - Node.js #
+node_modules
 node_modules/
 
 # PyInstaller
@@ -69,11 +63,6 @@ coverage.xml
 
 # IDE Files
 .idea/
-
-# Local Development
-dev/archive/
-dev/usr
-Makefile
 
 # Translations
 *.mo
@@ -105,15 +94,17 @@ target/
 # celery beat schedule file
 celerybeat-schedule
 
-# dotenv
-.env
-
-# virtualenv
-venv/
-ENV/
 
 # Spyder project settings
 .spyderproject
 
 # Rope project settings
 .ropeproject
+
+# Misc
+tmp
+
+# Local Development
+dev/archive/
+dev/usr
+Makefile
