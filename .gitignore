@@ -105,6 +105,5 @@ celerybeat-schedule
 tmp
 
 # Local Development
-dev/archive/
 dev/usr
 Makefile
