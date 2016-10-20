@@ -1,5 +1,14 @@
 from index import db
 from werkzeug.security import generate_password_hash, check_password_hash
+# Might want to change code to be like the following.
+# def self._password = User.hashed_password(password)
+# @property
+# def password(self):
+#     return self._password
+#
+# @password.setter
+# def set_password(self, password):
+#     self._password = generate_password_hash(password)
 
 
 class User(db.Model):
