@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Analytics.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="auth.html">
+                auth.js
+              </a>
+            
+              
+              <a class="source" href="data.html">
+                data.js
+              </a>
+            
+              
+              <a class="source" href="Analytics.html">
+                Analytics.js
+              </a>
+            
+              
+              <a class="source" href="AuthenticatedComponent.html">
+                AuthenticatedComponent.js
+              </a>
+            
+              
+              <a class="source" href="DetermineAuth.html">
+                DetermineAuth.js
+              </a>
+            
+              
+              <a class="source" href="LoginView.html">
+                LoginView.js
+              </a>
+            
+              
+              <a class="source" href="NotFound.html">
+                NotFound.js
+              </a>
+            
+              
+              <a class="source" href="ProtectedView.html">
+                ProtectedView.js
+              </a>
+            
+              
+              <a class="source" href="RegisterView.html">
+                RegisterView.js
+              </a>
+            
+              
+              <a class="source" href="TranslationTableComponent.html">
+                TranslationTableComponent.js
+              </a>
+            
+              
+              <a class="source" href="notAuthenticatedComponent.html">
+                notAuthenticatedComponent.js
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="auth.html">
+                auth.js
+              </a>
+            
+              
+              <a class="source" href="data.html">
+                data.js
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="routes.html">
+                routes.js
+              </a>
+            
+              
+              <a class="source" href="configureStore.html">
+                configureStore.js
+              </a>
+            
+              
+              <a class="source" href="style.html">
+                style.scss
+              </a>
+            
+              
+              <a class="source" href="http_functions.html">
+                http_functions.js
+              </a>
+            
+              
+              <a class="source" href="isMobileAndTablet.html">
+                isMobileAndTablet.js
+              </a>
+            
+              
+              <a class="source" href="misc.html">
+                misc.js
+              </a>
+            
+              
+              <a class="source" href="parallax.html">
+                parallax.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>Analytics.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { bindActionCreators } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>;
+<span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;
+<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> actionCreators <span class="hljs-keyword">from</span> <span class="hljs-string">'../actions/auth'</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mapStateToProps</span>(<span class="hljs-params">state</span>) </span>{
+    <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">isRegistering</span>: state.auth.isRegistering,
+        <span class="hljs-attr">registerStatusText</span>: state.auth.registerStatusText,
+    };
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mapDispatchToProps</span>(<span class="hljs-params">dispatch</span>) </span>{
+    <span class="hljs-keyword">return</span> bindActionCreators(actionCreators, dispatch);
+}
+
+@connect(mapStateToProps, mapDispatchToProps)
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Analytics</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{ <span class="hljs-comment">// eslint-disable-line react/prefer-stateless-function</span>
+    render() {
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"col-md-8"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Analytics<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">hr</span> /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+        );
+    }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Analytics;</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

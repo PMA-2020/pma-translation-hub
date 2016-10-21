@@ -6,9 +6,11 @@
     "clean": "rimraf dist",
     "build": "webpack --progress --verbose --colors --display-error-details --config webpack/common.config.js",
     "build:production": "npm run clean && npm run build",
+    "build-prep": "npm run docs && npm run lint && npm run test",
     "lint": "eslint src",
     "start": "node bin/server.js",
-    "test": "karma start"
+    "test": "karma start",
+    "docs": "docco {src,test}/{**/*,*} -l classic"
   },
   "unusedScripts": {
     "test": "mocha -R nyan -w --check-leaks"
@@ -142,5 +144,7 @@
       "react": "^15.3.2"
     }
   },
-  "dependencies": {}
+  "dependencies": {
+    "docco": "^0.7.0"
+  }
 }

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>RegisterView.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="auth.html">
+                auth.js
+              </a>
+            
+              
+              <a class="source" href="data.html">
+                data.js
+              </a>
+            
+              
+              <a class="source" href="Analytics.html">
+                Analytics.js
+              </a>
+            
+              
+              <a class="source" href="AuthenticatedComponent.html">
+                AuthenticatedComponent.js
+              </a>
+            
+              
+              <a class="source" href="DetermineAuth.html">
+                DetermineAuth.js
+              </a>
+            
+              
+              <a class="source" href="LoginView.html">
+                LoginView.js
+              </a>
+            
+              
+              <a class="source" href="NotFound.html">
+                NotFound.js
+              </a>
+            
+              
+              <a class="source" href="ProtectedView.html">
+                ProtectedView.js
+              </a>
+            
+              
+              <a class="source" href="RegisterView.html">
+                RegisterView.js
+              </a>
+            
+              
+              <a class="source" href="TranslationTableComponent.html">
+                TranslationTableComponent.js
+              </a>
+            
+              
+              <a class="source" href="notAuthenticatedComponent.html">
+                notAuthenticatedComponent.js
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="auth.html">
+                auth.js
+              </a>
+            
+              
+              <a class="source" href="data.html">
+                data.js
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="routes.html">
+                routes.js
+              </a>
+            
+              
+              <a class="source" href="configureStore.html">
+                configureStore.js
+              </a>
+            
+              
+              <a class="source" href="style.html">
+                style.scss
+              </a>
+            
+              
+              <a class="source" href="http_functions.html">
+                http_functions.js
+              </a>
+            
+              
+              <a class="source" href="isMobileAndTablet.html">
+                isMobileAndTablet.js
+              </a>
+            
+              
+              <a class="source" href="misc.html">
+                misc.js
+              </a>
+            
+              
+              <a class="source" href="parallax.html">
+                parallax.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>RegisterView.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-comment">/* eslint camelcase: 0, no-underscore-dangle: 0 */</span>
+
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { bindActionCreators } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>;
+<span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;
+<span class="hljs-keyword">import</span> TextField <span class="hljs-keyword">from</span> <span class="hljs-string">'material-ui/TextField'</span>;
+<span class="hljs-keyword">import</span> RaisedButton <span class="hljs-keyword">from</span> <span class="hljs-string">'material-ui/RaisedButton'</span>;
+<span class="hljs-keyword">import</span> Paper <span class="hljs-keyword">from</span> <span class="hljs-string">'material-ui/Paper'</span>;
+
+<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> actionCreators <span class="hljs-keyword">from</span> <span class="hljs-string">'../actions/auth'</span>;
+
+<span class="hljs-keyword">import</span> { validateEmail } <span class="hljs-keyword">from</span> <span class="hljs-string">'../utils/misc'</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mapStateToProps</span>(<span class="hljs-params">state</span>) </span>{
+    <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">isRegistering</span>: state.auth.isRegistering,
+        <span class="hljs-attr">registerStatusText</span>: state.auth.registerStatusText,
+    };
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mapDispatchToProps</span>(<span class="hljs-params">dispatch</span>) </span>{
+    <span class="hljs-keyword">return</span> bindActionCreators(actionCreators, dispatch);
+}
+
+<span class="hljs-keyword">const</span> style = {
+    <span class="hljs-attr">marginTop</span>: <span class="hljs-number">50</span>,
+    <span class="hljs-attr">paddingBottom</span>: <span class="hljs-number">50</span>,
+    <span class="hljs-attr">paddingTop</span>: <span class="hljs-number">25</span>,
+    <span class="hljs-attr">width</span>: <span class="hljs-string">'100%'</span>,
+    <span class="hljs-attr">textAlign</span>: <span class="hljs-string">'center'</span>,
+    <span class="hljs-attr">display</span>: <span class="hljs-string">'inline-block'</span>,
+};
+
+@connect(mapStateToProps, mapDispatchToProps)
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RegisterView</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+
+    <span class="hljs-keyword">constructor</span>(props) {
+        <span class="hljs-keyword">super</span>(props);
+        <span class="hljs-keyword">const</span> redirectRoute = <span class="hljs-string">'/login'</span>;
+        <span class="hljs-keyword">this</span>.state = {
+            <span class="hljs-attr">email</span>: <span class="hljs-string">''</span>,
+            <span class="hljs-attr">password</span>: <span class="hljs-string">''</span>,
+            <span class="hljs-attr">email_error_text</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">password_error_text</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">redirectTo</span>: redirectRoute,
+            <span class="hljs-attr">disabled</span>: <span class="hljs-literal">true</span>,
+        };
+    }
+
+    isDisabled() {
+        <span class="hljs-keyword">let</span> email_is_valid = <span class="hljs-literal">false</span>;
+        <span class="hljs-keyword">let</span> password_is_valid = <span class="hljs-literal">false</span>;
+
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.state.email === <span class="hljs-string">''</span>) {
+            <span class="hljs-keyword">this</span>.setState({
+                <span class="hljs-attr">email_error_text</span>: <span class="hljs-literal">null</span>,
+            });
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (validateEmail(<span class="hljs-keyword">this</span>.state.email)) {
+            email_is_valid = <span class="hljs-literal">true</span>;
+            <span class="hljs-keyword">this</span>.setState({
+                <span class="hljs-attr">email_error_text</span>: <span class="hljs-literal">null</span>,
+            });
+
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">this</span>.setState({
+                <span class="hljs-attr">email_error_text</span>: <span class="hljs-string">'Sorry, this is not a valid email'</span>,
+            });
+        }
+
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.state.password === <span class="hljs-string">''</span> || !<span class="hljs-keyword">this</span>.state.password) {
+            <span class="hljs-keyword">this</span>.setState({
+                <span class="hljs-attr">password_error_text</span>: <span class="hljs-literal">null</span>,
+            });
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.state.password.length &gt;= <span class="hljs-number">6</span>) {
+            password_is_valid = <span class="hljs-literal">true</span>;
+            <span class="hljs-keyword">this</span>.setState({
+                <span class="hljs-attr">password_error_text</span>: <span class="hljs-literal">null</span>,
+            });
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">this</span>.setState({
+                <span class="hljs-attr">password_error_text</span>: <span class="hljs-string">'Your password must be at least 6 characters'</span>,
+            });
+
+        }
+
+        <span class="hljs-keyword">if</span> (email_is_valid &amp;&amp; password_is_valid) {
+            <span class="hljs-keyword">this</span>.setState({
+                <span class="hljs-attr">disabled</span>: <span class="hljs-literal">false</span>,
+            });
+        }
+
+    }
+
+    changeValue(e, type) {
+        <span class="hljs-keyword">const</span> value = e.target.value;
+        <span class="hljs-keyword">const</span> next_state = {};
+        next_state[type] = value;
+        <span class="hljs-keyword">this</span>.setState(next_state, () =&gt; {
+            <span class="hljs-keyword">this</span>.isDisabled();
+        });
+    }
+
+    _handleKeyPress(e) {
+        <span class="hljs-keyword">if</span> (e.key === <span class="hljs-string">'Enter'</span>) {
+            <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">this</span>.state.disabled) {
+                <span class="hljs-keyword">this</span>.login(e);
+            }
+        }
+    }
+
+    login(e) {
+        e.preventDefault();
+        <span class="hljs-keyword">this</span>.props.registerUser(<span class="hljs-keyword">this</span>.state.email, <span class="hljs-keyword">this</span>.state.password, <span class="hljs-keyword">this</span>.state.redirectTo);
+    }
+
+    render() {
+        <span class="hljs-keyword">return</span> (
+            &lt;div className="col-md-6 col-md-offset-3" onKeyPress={(e) =&gt; this._handleKeyPress(e)}&gt;
+                &lt;Paper style={style}&gt;
+                    &lt;div className="text-center"&gt;
+                        &lt;h2&gt;Register to view protected content!&lt;/h2&gt;
+                        {
+                            this.props.registerStatusText &amp;&amp;
+                                &lt;div className="alert alert-info"&gt;
+                                    {this.props.registerStatusText}
+                                &lt;/div&gt;
+                        }
+
+                        &lt;div className="col-md-12"&gt;
+                            &lt;TextField
+                              hintText="Email"
+                              floatingLabelText="Email"
+                              type="email"
+                              errorText={this.state.email_error_text}
+                              onChange={(e) =&gt; this.changeValue(e, 'email')}
+                            /&gt;
+                        &lt;/div&gt;
+                        &lt;div className="col-md-12"&gt;
+                            &lt;TextField
+                              hintText="Password"
+                              floatingLabelText="Password"
+                              type="password"
+                              errorText={this.state.password_error_text}
+                              onChange={(e) =&gt; this.changeValue(e, 'password')}
+                            /&gt;
+                        &lt;/div&gt;
+
+                        &lt;RaisedButton
+                          disabled={this.state.disabled}
+                          style={{ marginTop: 50 }}
+                          label="Submit"
+                          onClick={(e) =&gt; this.login(e)}
+                        /&gt;
+
+                    &lt;/div&gt;
+                &lt;/Paper&gt;
+
+            &lt;/div&gt;
+        );
+
+    }
+}
+
+RegisterView.propTypes = {
+    registerUser: React.PropTypes.func,
+    registerStatusText: React.PropTypes.string,
+};</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>efax.rc</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="efax.html">
+                efax.rc
+              </a>
+            
+              
+              <a class="source" href="emond.html">
+                emond.d
+              </a>
+            
+              
+              <a class="source" href="locate.html">
+                locate.rc
+              </a>
+            
+              
+              <a class="source" href="mach_init.html">
+                mach_init.d
+              </a>
+            
+              
+              <a class="source" href="mach_init_per_login_session.html">
+                mach_init_per_login_session.d
+              </a>
+            
+              
+              <a class="source" href="mach_init_per_user.html">
+                mach_init_per_user.d
+              </a>
+            
+              
+              <a class="source" href="mail.html">
+                mail.rc
+              </a>
+            
+              
+              <a class="source" href="manpaths.html">
+                manpaths.d
+              </a>
+            
+              
+              <a class="source" href="newsyslog.html">
+                newsyslog.d
+              </a>
+            
+              
+              <a class="source" href="pam.html">
+                pam.d
+              </a>
+            
+              
+              <a class="source" href="paths.html">
+                paths.d
+              </a>
+            
+              
+              <a class="source" href="auth.html">
+                auth.js
+              </a>
+            
+              
+              <a class="source" href="data.html">
+                data.js
+              </a>
+            
+              
+              <a class="source" href="Analytics.html">
+                Analytics.js
+              </a>
+            
+              
+              <a class="source" href="AuthenticatedComponent.html">
+                AuthenticatedComponent.js
+              </a>
+            
+              
+              <a class="source" href="DetermineAuth.html">
+                DetermineAuth.js
+              </a>
+            
+              
+              <a class="source" href="LoginView.html">
+                LoginView.js
+              </a>
+            
+              
+              <a class="source" href="NotFound.html">
+                NotFound.js
+              </a>
+            
+              
+              <a class="source" href="ProtectedView.html">
+                ProtectedView.js
+              </a>
+            
+              
+              <a class="source" href="RegisterView.html">
+                RegisterView.js
+              </a>
+            
+              
+              <a class="source" href="TranslationTableComponent.html">
+                TranslationTableComponent.js
+              </a>
+            
+              
+              <a class="source" href="notAuthenticatedComponent.html">
+                notAuthenticatedComponent.js
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="auth.html">
+                auth.js
+              </a>
+            
+              
+              <a class="source" href="data.html">
+                data.js
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="routes.html">
+                routes.js
+              </a>
+            
+              
+              <a class="source" href="configureStore.html">
+                configureStore.js
+              </a>
+            
+              
+              <a class="source" href="style.html">
+                style.scss
+              </a>
+            
+              
+              <a class="source" href="http_functions.html">
+                http_functions.js
+              </a>
+            
+              
+              <a class="source" href="isMobileAndTablet.html">
+                isMobileAndTablet.js
+              </a>
+            
+              
+              <a class="source" href="misc.html">
+                misc.js
+              </a>
+            
+              
+              <a class="source" href="parallax.html">
+                parallax.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>efax.rc</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>#
+# /etc/efax.rc
+#
+# Configuration file <span class="hljs-keyword">for</span> fax(<span class="hljs-number">1</span>)
+#
+
+OWNER=
+MODE=
+DCMD=
+VCMD=
+
+DEVICE_URI=`defaults read /Library/Preferences/com.apple.print.FaxPrefs device-uri`
+
+# verify it<span class="hljs-symbol">'s</span> a <span class="hljs-string">"fax://dev/"</span> formated uri...
+<span class="hljs-keyword">if</span> (echo <span class="hljs-string">"$DEVICE_URI"</span> | grep -q <span class="hljs-string">"^fax://dev/"</span>); then
+	# Remove scheme and path components...
+	DEV=`echo $DEVICE_URI | cut -c <span class="hljs-number">11</span>-`
+	DEVANSWER=`echo $DEV|sed -e <span class="hljs-string">"s/cu\.\(.*\)/tty.\1/g"</span>`
+<span class="hljs-keyword">else</span>
+	# Use <span class="hljs-keyword">default</span> modem device...
+	DEV=cu.usbmodem
+	DEVANSWER=tty.usbmodem
+	echo <span class="hljs-string">"$0: using default device \"$DEV\""</span> &gt;&amp;<span class="hljs-number">2</span>
+fi
+
+FROM=`defaults read /Library/Preferences/com.apple.print.FaxPrefs FaxNumber`
+<span class="hljs-keyword">if</span> [ $? -ne <span class="hljs-number">0</span> ]; then
+	echo <span class="hljs-string">"$0: can't read FaxPrefs FaxNumber"</span> &gt;&amp;<span class="hljs-number">2</span>
+fi
+
+ANSRINGS=`defaults read /Library/Preferences/com.apple.print.FaxPrefs RingCount`
+<span class="hljs-keyword">if</span> [ <span class="hljs-string">"x$ANSRINGS"</span> = <span class="hljs-string">"x"</span> ]; then
+	echo <span class="hljs-string">"$0: can't read FaxPrefs RingCount"</span> &gt;&amp;<span class="hljs-number">2</span>
+	ANSRINGS=<span class="hljs-string">"0"</span>
+fi
+
+# HOME must <span class="hljs-keyword">be</span> defined to get sites.py to add /Library... to sitedirs
+<span class="hljs-keyword">if</span> [ <span class="hljs-string">"x$HOME"</span> = <span class="hljs-string">"x"</span> ]; then
+	export HOME=/tmp
+fi
+
+NOTIFY='/usr/libexec/fax/faxnotify $f $FILES <span class="hljs-number">2</span>&gt;/dev/console'</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>AuthenticatedComponent.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="auth.html">
+                auth.js
+              </a>
+            
+              
+              <a class="source" href="data.html">
+                data.js
+              </a>
+            
+              
+              <a class="source" href="Analytics.html">
+                Analytics.js
+              </a>
+            
+              
+              <a class="source" href="AuthenticatedComponent.html">
+                AuthenticatedComponent.js
+              </a>
+            
+              
+              <a class="source" href="DetermineAuth.html">
+                DetermineAuth.js
+              </a>
+            
+              
+              <a class="source" href="LoginView.html">
+                LoginView.js
+              </a>
+            
+              
+              <a class="source" href="NotFound.html">
+                NotFound.js
+              </a>
+            
+              
+              <a class="source" href="ProtectedView.html">
+                ProtectedView.js
+              </a>
+            
+              
+              <a class="source" href="RegisterView.html">
+                RegisterView.js
+              </a>
+            
+              
+              <a class="source" href="TranslationTableComponent.html">
+                TranslationTableComponent.js
+              </a>
+            
+              
+              <a class="source" href="notAuthenticatedComponent.html">
+                notAuthenticatedComponent.js
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="auth.html">
+                auth.js
+              </a>
+            
+              
+              <a class="source" href="data.html">
+                data.js
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="routes.html">
+                routes.js
+              </a>
+            
+              
+              <a class="source" href="configureStore.html">
+                configureStore.js
+              </a>
+            
+              
+              <a class="source" href="style.html">
+                style.scss
+              </a>
+            
+              
+              <a class="source" href="http_functions.html">
+                http_functions.js
+              </a>
+            
+              
+              <a class="source" href="isMobileAndTablet.html">
+                isMobileAndTablet.js
+              </a>
+            
+              
+              <a class="source" href="misc.html">
+                misc.js
+              </a>
+            
+              
+              <a class="source" href="parallax.html">
+                parallax.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>AuthenticatedComponent.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;
+<span class="hljs-keyword">import</span> { bindActionCreators } <span class="hljs-keyword">from</span> <span class="hljs-string">'redux'</span>;
+<span class="hljs-keyword">import</span> { browserHistory } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-router'</span>;
+<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> actionCreators <span class="hljs-keyword">from</span> <span class="hljs-string">'../actions/auth'</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mapStateToProps</span>(<span class="hljs-params">state</span>) </span>{
+    <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">token</span>: state.auth.token,
+        <span class="hljs-attr">userName</span>: state.auth.userName,
+        <span class="hljs-attr">isAuthenticated</span>: state.auth.isAuthenticated,
+    };
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mapDispatchToProps</span>(<span class="hljs-params">dispatch</span>) </span>{
+    <span class="hljs-keyword">return</span> bindActionCreators(actionCreators, dispatch);
+}
+
+
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">requireAuthentication</span>(<span class="hljs-params">Component</span>) </span>{
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AuthenticatedComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+        componentWillMount() {
+            <span class="hljs-keyword">this</span>.checkAuth();
+            <span class="hljs-keyword">this</span>.state = {
+                <span class="hljs-attr">loaded_if_needed</span>: <span class="hljs-literal">false</span>,
+            };
+        }
+
+        componentWillReceiveProps(nextProps) {
+            <span class="hljs-keyword">this</span>.checkAuth(nextProps);
+        }
+
+        checkAuth(props = <span class="hljs-keyword">this</span>.props) {
+            <span class="hljs-keyword">if</span> (!props.isAuthenticated) {
+                <span class="hljs-keyword">const</span> token = localStorage.getItem(<span class="hljs-string">'token'</span>);
+                <span class="hljs-keyword">if</span> (!token) {
+                    browserHistory.push(<span class="hljs-string">'/home'</span>);
+                } <span class="hljs-keyword">else</span> {
+                    fetch(<span class="hljs-string">'api/is_token_valid'</span>, {
+                        <span class="hljs-attr">method</span>: <span class="hljs-string">'post'</span>,
+                        <span class="hljs-attr">credentials</span>: <span class="hljs-string">'include'</span>,
+                        <span class="hljs-attr">headers</span>: {
+                            <span class="hljs-string">'Accept'</span>: <span class="hljs-string">'application/json'</span>, <span class="hljs-comment">// eslint-disable-line quote-props</span>
+                            <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/json'</span>,
+                        },
+                        <span class="hljs-attr">body</span>: <span class="hljs-built_in">JSON</span>.stringify({ token }),
+                    })
+                        .then(<span class="hljs-function"><span class="hljs-params">res</span> =&gt;</span> {
+                            <span class="hljs-keyword">if</span> (res.status === <span class="hljs-number">200</span>) {
+                                <span class="hljs-keyword">this</span>.props.loginUserSuccess(token);
+                                <span class="hljs-keyword">this</span>.setState({
+                                    <span class="hljs-attr">loaded_if_needed</span>: <span class="hljs-literal">true</span>,
+                                });
+
+                            } <span class="hljs-keyword">else</span> {
+                                browserHistory.push(<span class="hljs-string">'/home'</span>);
+
+                            }
+                        });
+
+                }
+            } <span class="hljs-keyword">else</span> {
+                <span class="hljs-keyword">this</span>.setState({
+                    <span class="hljs-attr">loaded_if_needed</span>: <span class="hljs-literal">true</span>,
+                });
+            }
+        }
+
+        render() {
+            <span class="hljs-keyword">return</span> (
+                <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+                    {this.props.isAuthenticated &amp;&amp; this.state.loaded_if_needed
+                        ? <span class="hljs-tag">&lt;<span class="hljs-name">Component</span> {<span class="hljs-attr">...this.props</span>} /&gt;</span>
+                        : null
+                    }
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            );
+
+        }
+    }
+
+    AuthenticatedComponent.propTypes = {
+        loginUserSuccess: React.PropTypes.func,
+        isAuthenticated: React.PropTypes.bool,
+    };
+
+    return connect(mapStateToProps, mapDispatchToProps)(AuthenticatedComponent);
+}
+
+</span></pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

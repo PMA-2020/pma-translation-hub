@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>auth.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="auth.html">
+                auth.js
+              </a>
+            
+              
+              <a class="source" href="data.html">
+                data.js
+              </a>
+            
+              
+              <a class="source" href="Analytics.html">
+                Analytics.js
+              </a>
+            
+              
+              <a class="source" href="AuthenticatedComponent.html">
+                AuthenticatedComponent.js
+              </a>
+            
+              
+              <a class="source" href="DetermineAuth.html">
+                DetermineAuth.js
+              </a>
+            
+              
+              <a class="source" href="LoginView.html">
+                LoginView.js
+              </a>
+            
+              
+              <a class="source" href="NotFound.html">
+                NotFound.js
+              </a>
+            
+              
+              <a class="source" href="ProtectedView.html">
+                ProtectedView.js
+              </a>
+            
+              
+              <a class="source" href="RegisterView.html">
+                RegisterView.js
+              </a>
+            
+              
+              <a class="source" href="TranslationTableComponent.html">
+                TranslationTableComponent.js
+              </a>
+            
+              
+              <a class="source" href="notAuthenticatedComponent.html">
+                notAuthenticatedComponent.js
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="auth.html">
+                auth.js
+              </a>
+            
+              
+              <a class="source" href="data.html">
+                data.js
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="routes.html">
+                routes.js
+              </a>
+            
+              
+              <a class="source" href="configureStore.html">
+                configureStore.js
+              </a>
+            
+              
+              <a class="source" href="style.html">
+                style.scss
+              </a>
+            
+              
+              <a class="source" href="http_functions.html">
+                http_functions.js
+              </a>
+            
+              
+              <a class="source" href="isMobileAndTablet.html">
+                isMobileAndTablet.js
+              </a>
+            
+              
+              <a class="source" href="misc.html">
+                misc.js
+              </a>
+            
+              
+              <a class="source" href="parallax.html">
+                parallax.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>auth.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">import</span> jwtDecode <span class="hljs-keyword">from</span> <span class="hljs-string">'jwt-decode'</span>
+
+<span class="hljs-keyword">import</span> { createReducer } <span class="hljs-keyword">from</span> <span class="hljs-string">'../utils/misc'</span>
+<span class="hljs-keyword">import</span> {
+    LOGIN_USER_SUCCESS,
+    LOGIN_USER_FAILURE,
+    LOGIN_USER_REQUEST,
+    LOGOUT_USER,
+    REGISTER_USER_FAILURE,
+    REGISTER_USER_REQUEST,
+    REGISTER_USER_SUCCESS,
+} <span class="hljs-keyword">from</span> <span class="hljs-string">'../constants/index'</span>
+
+<span class="hljs-keyword">const</span> initialState = {
+    <span class="hljs-attr">token</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">userName</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">isAuthenticated</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">isAuthenticating</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">statusText</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">isRegistering</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">isRegistered</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">registerStatusText</span>: <span class="hljs-literal">null</span>,
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> createReducer(initialState, {
+    [LOGIN_USER_REQUEST]: <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span>
+        <span class="hljs-built_in">Object</span>.assign({}, state, {
+            <span class="hljs-attr">isAuthenticating</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">statusText</span>: <span class="hljs-literal">null</span>,
+        }),
+    [LOGIN_USER_SUCCESS]: <span class="hljs-function">(<span class="hljs-params">state, payload</span>) =&gt;</span>
+        <span class="hljs-built_in">Object</span>.assign({}, state, {
+            <span class="hljs-attr">isAuthenticating</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">isAuthenticated</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">token</span>: payload.token,
+            <span class="hljs-attr">userName</span>: jwtDecode(payload.token).email,
+            <span class="hljs-attr">statusText</span>: <span class="hljs-string">'You have been successfully logged in.'</span>,
+        }),
+    [LOGIN_USER_FAILURE]: <span class="hljs-function">(<span class="hljs-params">state, payload</span>) =&gt;</span>
+        <span class="hljs-built_in">Object</span>.assign({}, state, {
+            <span class="hljs-attr">isAuthenticating</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">isAuthenticated</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">token</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">userName</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">statusText</span>: <span class="hljs-string">`Authentication Error: <span class="hljs-subst">${payload.status}</span> <span class="hljs-subst">${payload.statusText}</span>`</span>,
+        }),
+    [LOGOUT_USER]: <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span>
+        <span class="hljs-built_in">Object</span>.assign({}, state, {
+            <span class="hljs-attr">isAuthenticated</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">token</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">userName</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">statusText</span>: <span class="hljs-string">'You have been successfully logged out.'</span>,
+        }),
+    [REGISTER_USER_SUCCESS]: <span class="hljs-function">(<span class="hljs-params">state, payload</span>) =&gt;</span>
+        <span class="hljs-built_in">Object</span>.assign({}, state, {
+            <span class="hljs-attr">isAuthenticating</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">isAuthenticated</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">isRegistering</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">token</span>: payload.token,
+            <span class="hljs-attr">userName</span>: jwtDecode(payload.token).email,
+            <span class="hljs-attr">registerStatusText</span>: <span class="hljs-string">'You have been successfully logged in.'</span>,
+        }),
+    [REGISTER_USER_REQUEST]: <span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span>
+        <span class="hljs-built_in">Object</span>.assign({}, state, {
+            <span class="hljs-attr">isRegistering</span>: <span class="hljs-literal">true</span>,
+        }),
+    [REGISTER_USER_FAILURE]: <span class="hljs-function">(<span class="hljs-params">state, payload</span>) =&gt;</span>
+        <span class="hljs-built_in">Object</span>.assign({}, state, {
+            <span class="hljs-attr">isAuthenticated</span>: <span class="hljs-literal">false</span>,
+            <span class="hljs-attr">token</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">userName</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">registerStatusText</span>: <span class="hljs-string">`Register Error: <span class="hljs-subst">${payload.status}</span> <span class="hljs-subst">${payload.statusText}</span>`</span>,
+        }),
+})</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
