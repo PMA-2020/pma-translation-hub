@@ -95,7 +95,7 @@
     "rc-datepicker": "^4.0.1",
     "react": "^15.3.1",
     "react-addons-css-transition-group": "^15.3.1",
-    "react-bootstrap-table": "https://github.com/joeflack4/react-bootstrap-table.git#develop",
+    "react-bootstrap-table": "git://github.com/joeflack4/react-bootstrap-table.git#develop",
     "react-calendar-component": "^1.0.0",
     "react-date-picker": "^5.3.28",
     "react-datepicker": "^0.29.0",
