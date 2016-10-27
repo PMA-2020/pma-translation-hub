@@ -1,6 +1,6 @@
-import jwtDecode from 'jwt-decode';
+import jwtDecode from 'jwt-decode'
 
-import { createReducer } from '../utils/misc';
+import { createReducer } from '../utils/misc'
 import {
     LOGIN_USER_SUCCESS,
     LOGIN_USER_FAILURE,
@@ -9,7 +9,7 @@ import {
     REGISTER_USER_FAILURE,
     REGISTER_USER_REQUEST,
     REGISTER_USER_SUCCESS,
-} from '../constants/index';
+} from '../constants/index'
 
 const initialState = {
     token: null,
@@ -20,7 +20,7 @@ const initialState = {
     isRegistering: false,
     isRegistered: false,
     registerStatusText: null,
-};
+}
 
 export default createReducer(initialState, {
     [LOGIN_USER_REQUEST]: (state) =>
@@ -71,4 +71,4 @@ export default createReducer(initialState, {
             userName: null,
             registerStatusText: `Register Error: ${payload.status} ${payload.statusText}`,
         }),
-});
+})

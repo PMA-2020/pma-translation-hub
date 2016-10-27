@@ -1,8 +1,10 @@
-import React from 'react';
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-// import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
-// import * as actionCreators from '../actions/data';
+// Docs: http://allenfang.github.io/react-bootstrap-table/docs.html
+
+import React from 'react'
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
+// import { connect } from 'react-redux'
+// import { bindActionCreators } from 'redux'
+// import * as actionCreators from '../actions/data'
 
 
 // function mapStateToProps(state) {
@@ -11,12 +13,12 @@ import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 //         token: state.auth.token,
 //         loaded: state.data.loaded,
 //         isFetching: state.data.isFetching,
-//     };
+//     }
 // }
 
 
 // function mapDispatchToProps(dispatch) {
-//     return bindActionCreators(actionCreators, dispatch);
+//     return bindActionCreators(actionCreators, dispatch)
 // }
 
 
@@ -70,59 +72,66 @@ var translationTexts = [{
       swahili: "Hello to you (in Swahili!)",
       french: "Hello to you (in French!)",
       questionAppearances: "FQ111, SQ222, SQ304"
-  }];
+  }]
 
 
 
 // @connect(mapStateToProps, mapDispatchToProps)
 export default class TranslationTable extends React.Component {
     componentDidMount() {
-        this.fetchData();
+        this.fetchData()
     }
 
+    //TODO: Fetch data from server, only with authorized access.
+    // By itself, '{}' does nothing. It is similar to 'pass' in Python.
     fetchProtectedData(token) {
         try {
-            //pass
-            console.log(token);
+            {}
+            console.log(token)
         } catch (e) {
-            // pass
-            console.log(e);
-            console.log(token);
+            {}
+            console.log(e)
+            console.log(token)
         }
     }
 
 
     fetchData() {
-        const token = this.props.token;
+        const token = this.props.token
         try {
-            //pass
-            this.props.fetchProtectedData(token);
+            {}
+            this.props.fetchProtectedData(token)
         } catch (e) {
-            //pass
-            console.log(e);
+            {}
+            console.log(e)
         }
     }
 
     // * It's a data format example.
     // Not working for some reason.
     // priceFormatter(cell, row) {
-    //   return '<i class="glyphicon glyphicon-usd"></i> ' + cell;
+    //   return '<i class="glyphicon glyphicon-usd"></i> ' + cell
     // }
 
     render() {
         return (
-            <BootstrapTable data={translationTexts} striped={true} hover={true} pagination={true} columnFilter={true} search={true} clearSearch={true} insertRow={true}>
-            {/*<BootstrapTable data={translationTexts}>*/}
-                <TableHeaderColumn dataField="id" isKey={true} dataAlign="center" dataSort={true}>#</TableHeaderColumn>
-                <TableHeaderColumn dataField="type" dataSort={true}>Type</TableHeaderColumn>
-                <TableHeaderColumn dataField="english" dataSort={true}>English</TableHeaderColumn>
-                <TableHeaderColumn dataField="swahili" dataSort={true}>Swahili</TableHeaderColumn>
-                <TableHeaderColumn dataField="french" dataSort={true}>French</TableHeaderColumn>
-                <TableHeaderColumn dataField="questionAppearances" dataSort={false}>In Questions</TableHeaderColumn>
-                {/*Not working for some reason.*/}
-                {/*<TableHeaderColumn dataField="price" dataFormat={priceFormatter}>Product Price</TableHeaderColumn>*/}
-            </BootstrapTable>
-        );
+            <div>
+                <h1>{this.props.title}</h1>
+                <BootstrapTable data={translationTexts} striped={true} hover={true} pagination={true} columnFilter={true} search={true} clearSearch={true} insertRow={true} exportCSV={true} bordered={false} height="100%" maxHeight={300}>
+                {/*<BootstrapTable data={translationTexts}>*/}
+                    <TableHeaderColumn dataField="id" isKey={true} dataAlign="center" dataSort={true}>#</TableHeaderColumn>
+                    <TableHeaderColumn dataField="type" dataSort={true}>Type</TableHeaderColumn>
+                    <TableHeaderColumn dataField="english" dataSort={true}>English</TableHeaderColumn>
+                    <TableHeaderColumn dataField="swahili" dataSort={true}>Swahili</TableHeaderColumn>
+                    <TableHeaderColumn dataField="french" dataSort={true}>French</TableHeaderColumn>
+                    <TableHeaderColumn dataField="questionAppearances" dataSort={false}>In Questions</TableHeaderColumn>
+                    {/*Not working for some reason.*/}
+                    {/*<TableHeaderColumn dataField="price" dataFormat={priceFormatter}>Product Price</TableHeaderColumn>*/}
+                </BootstrapTable>
+                <br/>
+                <br/>
+            </div>
+        )
     }
 }
 
@@ -132,4 +141,4 @@ TranslationTable.propTypes = {
     // userName: React.PropTypes.string,
     data: React.PropTypes.any,
     // token: React.PropTypes.string,
-};
+}

@@ -1,11 +1,11 @@
-import { RECEIVE_PROTECTED_DATA, FETCH_PROTECTED_DATA_REQUEST } from '../constants';
-import { createReducer } from '../utils/misc';
+import { RECEIVE_PROTECTED_DATA, FETCH_PROTECTED_DATA_REQUEST } from '../constants/index'
+import { createReducer } from '../utils/misc'
 
 const initialState = {
     data: null,
     isFetching: false,
     loaded: false,
-};
+}
 
 export default createReducer(initialState, {
     [RECEIVE_PROTECTED_DATA]: (state, payload) =>
@@ -18,4 +18,4 @@ export default createReducer(initialState, {
         Object.assign({}, state, {
             isFetching: true,
         }),
-});
+})

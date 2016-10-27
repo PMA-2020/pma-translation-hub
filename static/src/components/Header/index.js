@@ -1,6 +1,10 @@
+//noinspection JSUnresolvedVariable
 import React, { Component } from 'react';
+//noinspection JSUnresolvedVariable
 import { browserHistory } from 'react-router';
+//noinspection JSUnresolvedVariable
 import { connect } from 'react-redux';
+//noinspection JSUnresolvedVariable
 import { bindActionCreators } from 'redux';
 import AppBar from 'material-ui/AppBar';
 import LeftNav from 'material-ui/Drawer';
@@ -29,7 +33,6 @@ export class Header extends Component {
         this.state = {
             open: false,
         };
-
     }
 
     dispatchNewRoute(route) {
