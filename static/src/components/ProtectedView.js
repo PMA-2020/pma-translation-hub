@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actionCreators from '../actions/data'
 import TranslationTable from './TranslationTableComponent.js'
-import TranslationsUpdateDrawer from './TranslationsUpdateDrawerComponent.js'
+import TranslationUpdateDrawer from './TranslationsUpdateDrawerComponent'
+import TranslationsUpdateDrawerToggler from './TranslationsUpdateDrawerTogglerComponent.js'
 // Needed for 'RightNav', which I should probably put in its own component and maybe call 'UpdatePane'
 //TODO: Update Pane - The following two need to be uncommented when ready to work on this.
 // import RightNav from 'material-ui/Drawer'
@@ -11,14 +12,13 @@ import TranslationsUpdateDrawer from './TranslationsUpdateDrawerComponent.js'
 //Not sure if I need these yet for the 'update' drawer/pane.
 // import { browserHistory } from 'react-router'
 
-
-
 function mapStateToProps(state) {
     return {
         data: state.data,
         token: state.auth.token,
         loaded: state.data.loaded,
         isFetching: state.data.isFetching,
+        open: state.translationsUpdateDrawer.translationUpdateDrawerOpenState
     }
 }
 
@@ -64,6 +64,7 @@ export default class ProtectedView extends React.Component {
     render() {
         return (
             <div>
+                { this.props.open ? <TranslationUpdateDrawer/> : <div></div> }
                 {/*TODO: Fix lazy loading*/}
                 {/*{!this.props.loaded*/}
                     {/*Note: For some reason this still shows even when loaded.*/}
@@ -78,7 +79,8 @@ export default class ProtectedView extends React.Component {
                 {/*}*/}
                 {/*Note - This height tag is here as a placeholder for debugging tabel height issues.*/}
                 {/*<div style={{height: "100%"}}>*/}
-                <TranslationsUpdateDrawer/>
+                {/*<TranslationsUpdateDrawerToggler/>*/}
+
                 <div>
                     {/*Visible to: */}
                     {/*This one should inherit from the base translation table and should have an extra column for 'status'. Such as 'new' or 'rejected'*/}
@@ -138,6 +140,7 @@ ProtectedView.propTypes = {
     userName: React.PropTypes.string,
     data: React.PropTypes.any,
     token: React.PropTypes.string,
+    open: React.PropTypes.bool
 }
 
 

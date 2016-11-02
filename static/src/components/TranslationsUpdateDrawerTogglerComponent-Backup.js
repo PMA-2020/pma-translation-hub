@@ -2,7 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actionCreators from '../actions/translationsUpdateDrawer'
-import TranslationUpdateDrawer from './TranslationsUpdateDrawerComponent'
+import RightNav from 'material-ui/Drawer';
+import Divider from 'material-ui/Divider';
 
 function mapStateToProps(state) {
     return {
@@ -17,6 +18,23 @@ function mapDispatchToProps(dispatch) {
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class TranslationsUpdateDrawerToggler extends React.Component {
+    componentDidMount() {
+        try {
+            {}
+        } catch (e) {
+            console.log(e)
+        }
+
+    }
+
+    //TODO: Make this work.
+    // handleClickOutside() {
+    //     this.setState({
+    //         open: false,
+    //     });
+    // }
+
+
     openDrawer(e) {
         e.preventDefault();
         this.props.openTranslationsUpdateDrawer();
@@ -33,15 +51,14 @@ export default class TranslationsUpdateDrawerToggler extends React.Component {
                 {!this.props.open
                     ?
                     <div>
-                        {/*<h1>Closed</h1>*/}
-                        <button onClick={(e) => this.openDrawer(e)}>Update Translations</button>
+                        <h1>Closed</h1>
+                        <button onClick={(e) => this.openDrawer(e)}>Click to open me.</button>
                     </div>
                     :
                     <div>
-                        {/*<h1>Open</h1>*/}
-                        <button onClick={(e) => this.closeDrawer(e)}>Close Translation Updater</button>
-                        {/*<RightNav openSecondary={true} zDepth={3}/>*/}
-                        <TranslationUpdateDrawer title="Update Row"/>
+                        <h1>Open</h1>
+                        <button onClick={(e) => this.closeDrawer(e)}>Click to close me.</button>
+                        <RightNav openSecondary={true} zDepth={3}/>
                         {/*<RightNav openSecondary={true} width="30%" zDepth={3}/>*/}
                     </div>
                 }
@@ -52,8 +69,10 @@ export default class TranslationsUpdateDrawerToggler extends React.Component {
 
 
 TranslationsUpdateDrawerToggler.propTypes = {
+    open: React.PropTypes.bool,
     openTranslationsUpdateDrawer: React.PropTypes.func,
     closeTranslationsUpdateDrawer:React.PropTypes.func
+
 }
 
 
