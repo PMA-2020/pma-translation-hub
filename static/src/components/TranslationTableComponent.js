@@ -1,11 +1,12 @@
 // Docs: http://allenfang.github.io/react-bootstrap-table/docs.html
-
 import React from 'react'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
-// import { connect } from 'react-redux'
-// import { bindActionCreators } from 'redux'
+// import { BootstrapTable, TableHeaderColumn } from 'z-react-bootstrap-table-dev'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 // import * as actionCreators from '../actions/data'
-
+import * as actionCreators from '../actions/translationsUpdateDrawer'
+// import store from '../store/configureStore'
 
 // function mapStateToProps(state) {
 //     return {
@@ -16,6 +17,15 @@ import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table'
 //     }
 // }
 
+function mapStateToProps(state) {
+    return {
+        open: state.translationsUpdateDrawer.translationUpdateDrawerOpenState
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators(actionCreators, dispatch)
+}
 
 // function mapDispatchToProps(dispatch) {
 //     return bindActionCreators(actionCreators, dispatch)
@@ -74,10 +84,49 @@ var translationTexts = [{
       questionAppearances: "FQ111, SQ222, SQ304"
   }]
 
+// helper = function() {
+//     console.log("test")
+// }
 
+// const options = {
+//     onRowClick: function(row) {
+//         // console.log(row.id);
+//         this.openDrawer()
+//     }
+// }
+
+// var test = actionCreators.openTranslationsUpdateDrawer()
+
+// const options = {
+//     onRowClick: function(row) {
+//         console.log(row.id);
+//         console.log(test)
+//         console.log(store.getState)
+        // store.dispatch(actionCreators.openTranslationsUpdateDrawer())
+        // this.openDrawer()
+        // this.props.openDrawer()
+        // this.props.openTranslationsUpdateDrawer()
+        // console.log(this)
+        // state.translationsUpdateDrawer()
+//     }
+// }
+
+// const selectRowProp = {
+//     mode: 'radio',
+//     onSelect: function(row, isSelected, event) {
+//         console.log(row.id);
+//     }
+// }
 
 // @connect(mapStateToProps, mapDispatchToProps)
+@connect(mapStateToProps, mapDispatchToProps)
 export default class TranslationTable extends React.Component {
+    constructor(props) {
+        super(props);
+        this.openDrawer = this.openDrawer.bind(this);
+        this.options.onRowClick = this.options.onRowClick.bind(this);
+    }
+
     componentDidMount() {
         this.fetchData()
     }
@@ -95,6 +144,26 @@ export default class TranslationTable extends React.Component {
         }
     }
 
+    // openDrawerforSubmits(e) {
+    //     e.preventDefault();
+    //     this.props.openTranslationsUpdateDrawer();
+    // }
+
+    openDrawer() {
+        this.props.openTranslationsUpdateDrawer()
+    }
+
+    setUpdateForm(rowID) {
+        this.props.setUpdateForm(rowID)
+    }
+
+    options = {
+        onRowClick: function(row) {
+            // console.log(row.id)
+            this.openDrawer()
+            this.setUpdateForm(row.id)
+        }
+    }
 
     fetchData() {
         const token = this.props.token
@@ -116,8 +185,14 @@ export default class TranslationTable extends React.Component {
     render() {
         return (
             <div>
+                {/*TODO: Remove this test below. */}
+                {/*<h1 onClick={(e) => this.openDrawer(e)}>{this.props.title}</h1>*/}
+                {/*<h1 onClick={() => this.openDrawer()}>{this.props.title}</h1>*/}
                 <h1>{this.props.title}</h1>
-                <BootstrapTable data={translationTexts} striped={true} hover={true} pagination={true} columnFilter={true} search={true} clearSearch={true} insertRow={true} exportCSV={true} bordered={false} height="100%" maxHeight={300}>
+                {/*<BootstrapTable data={translationTexts} selectRow={selectRowProp} options={options} striped={true} hover={true} pagination={true} columnFilter={true} search={true} clearSearch={true} insertRow={true} exportCSV={true} bordered={false} height="100%" maxHeight={300}>*/}
+                {/*<BootstrapTable data={translationTexts} selectRow={selectRowProp} striped={true} hover={true} pagination={true} columnFilter={true} search={true} clearSearch={true} insertRow={true} exportCSV={true} bordered={false} height="100%" maxHeight={300}>*/}
+                <BootstrapTable data={translationTexts} options={this.options} striped={true} hover={true} pagination={true} columnFilter={true} search={true} clearSearch={true} insertRow={true} exportCSV={true} bordered={false} height="100%" maxHeight={300}>
+                {/*<BootstrapTable data={translationTexts} striped={true} hover={true} pagination={true} columnFilter={true} search={true} clearSearch={true} insertRow={true} exportCSV={true} bordered={false} height="100%" maxHeight={300}>*/}
                 {/*<BootstrapTable data={translationTexts}>*/}
                     <TableHeaderColumn dataField="id" isKey={true} dataAlign="center" dataSort={true}>#</TableHeaderColumn>
                     <TableHeaderColumn dataField="type" dataSort={true}>Type</TableHeaderColumn>
@@ -141,4 +216,7 @@ TranslationTable.propTypes = {
     // userName: React.PropTypes.string,
     data: React.PropTypes.any,
     // token: React.PropTypes.string,
+    open: React.PropTypes.bool,
+    openTranslationsUpdateDrawer: React.PropTypes.func,
+    setUpdateForm: React.PropTypes.func
 }

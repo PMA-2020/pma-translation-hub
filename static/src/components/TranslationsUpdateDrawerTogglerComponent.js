@@ -17,7 +17,7 @@ function mapDispatchToProps(dispatch) {
 
 
 @connect(mapStateToProps, mapDispatchToProps)
-export default class TranslationsUpdateDrawer extends React.Component {
+export default class TranslationsUpdateDrawerToggler extends React.Component {
     componentDidMount() {
         try {
             {}
@@ -68,7 +68,7 @@ export default class TranslationsUpdateDrawer extends React.Component {
 }
 
 
-TranslationsUpdateDrawer.propTypes = {
+TranslationsUpdateDrawerToggler.propTypes = {
     open: React.PropTypes.bool,
     openTranslationsUpdateDrawer: React.PropTypes.func,
     closeTranslationsUpdateDrawer:React.PropTypes.func
