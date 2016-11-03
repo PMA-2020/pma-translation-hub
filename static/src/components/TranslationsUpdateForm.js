@@ -60,11 +60,26 @@ export default class TranslationsUpdateForm extends React.Component {
     //TODO: For-loop to generate appropriate number of fields for each language. Should have a 'languages' property within 'data'.
     //TODO: Get actual data to dynamically load in here.
     render() {
+        // # Dynamically load language fields.
+        var languages = []
+        var languageField = (data, label) => {
+            return (
+                <div className="form-group">
+                  <label>{label}</label>
+                  <textarea className="form-control" id="exampleTextarea" rows="3" placeholder={label} value={data} onChange={(e) => update(data)}/>
+                </div>
+            )
+        }
+        Object.entries(this.props.formData.languages).forEach(([key]) => {
+            var label = _.capitalize(key) + ' Text'
+            languages.push(languageField(this.props.formData.languages[key], label))
+        })
+
+
         //noinspection CheckTagEmptyBody
         return (
             <div>
                 {/*ID: {this.props.id}.*/}
-
                 <form id={"TranslationUpdateForm-"+this.props.id} role="form" method='POST' action="">
                     {/*<div className="input-group">*/}
                         {/*<label>Question 1</label>*/}
@@ -88,12 +103,11 @@ export default class TranslationsUpdateForm extends React.Component {
                     </div>
                     <div className="form-group">
                       <label>Question Appearances</label>
-                      <input type="text" className="form-control" placeholder='Question Appearances' value={this.props.formData.questionAppearances} onChange={(e) => update(this.props.formData.type)} />
+                      <input type="text" className="form-control" placeholder='Question Appearances' value={this.props.formData.questionAppearances} onChange={(e) => update(this.props.formData.questionAppearances)} />
                     </div>
-                    <div className="form-group">
-                      <label>English Text</label>
-                      <textarea className="form-control" id="exampleTextarea" rows="3" placeholder="English Text" value={this.props.formData.english} onChange={(e) => update(this.props.formData.type)}></textarea>
-                    </div>
+                    {languages}
+
+
 
 
                     {/* # React-Boostrap Version of Forms # */}

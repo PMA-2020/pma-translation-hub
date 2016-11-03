@@ -11,7 +11,6 @@ import LeftNav from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 import Divider from 'material-ui/Divider';
-
 import * as actionCreators from '../../actions/auth';
 
 function mapStateToProps(state) {
@@ -19,6 +18,7 @@ function mapStateToProps(state) {
         token: state.auth.token,
         userName: state.auth.userName,
         isAuthenticated: state.auth.isAuthenticated,
+        menuOpenState: state.menuOpenState
     };
 }
 
@@ -32,7 +32,7 @@ export class Header extends Component {
         super(props);
         this.state = {
             open: false,
-        };
+        }
     }
 
     dispatchNewRoute(route) {
@@ -65,6 +65,11 @@ export class Header extends Component {
         });
     }
 
+    closeDrawer(e) {
+        e.preventDefault();
+        this.props.closeMenu()
+    }
+
     render() {
         return (
             <header>
@@ -79,10 +84,33 @@ export class Header extends Component {
                                     Register
                                 </MenuItem>
                             </div>
+
                             :
+
                             <div>
+                                <div style={{display: 'flex', justifyContent: 'space-between', paddingLeft: "10px", paddingTop: "10px", paddingRight: "10px"}}>
+                                    <p style={{alignItems: 'left', verticalAlign: 'bottom'}}><strong>PMA Translation Hub</strong></p>
+                                    <p>
+                                        <a href="" style={{hovorColor: "pink", active: "black"}}>
+                                            <i className="fa fa-times" onClick={(e) => this.closeDrawer(e)} name='close' size='2x'
+                                            style={{alignItems: 'right', verticalAlign: 'top', color: 'grey', hoverColor: "#00bcd4"}} />
+                                        </a>
+                                    </p>
+                                </div>
+                                <Divider />
+
+                                <MenuItem onClick={() => this.dispatchNewRoute('/home')}>
+                                    Home
+                                </MenuItem>
+                                <Divider />
+
                                 <MenuItem onClick={() => this.dispatchNewRoute('/analytics')}>
-                                    Analytics
+                                    Users
+                                </MenuItem>
+                                <Divider />
+
+                                <MenuItem onClick={() => this.dispatchNewRoute('/analytics')}>
+                                    Settings
                                 </MenuItem>
                                 <Divider />
 

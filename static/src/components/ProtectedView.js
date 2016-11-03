@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux'
 import * as actionCreators from '../actions/data'
 import TranslationTable from './TranslationTableComponent.js'
 import TranslationUpdateDrawer from './TranslationsUpdateDrawerComponent'
-import TranslationsUpdateDrawerToggler from './TranslationsUpdateDrawerTogglerComponent.js'
+// import TranslationsUpdateDrawerToggler from './TranslationsUpdateDrawerTogglerComponent.js'
 // Needed for 'RightNav', which I should probably put in its own component and maybe call 'UpdatePane'
 //TODO: Update Pane - The following two need to be uncommented when ready to work on this.
 // import RightNav from 'material-ui/Drawer'
@@ -84,15 +84,15 @@ export default class ProtectedView extends React.Component {
                 <div>
                     {/*Visible to: */}
                     {/*This one should inherit from the base translation table and should have an extra column for 'status'. Such as 'new' or 'rejected'*/}
-                    <TranslationTable title="Translations Needed"/>
+                    <TranslationTable title="Translations Needed" dataType="new"/>
                 </div>
                 <div>
                     {/*Visible to: */}
-                    <TranslationTable title="Pending Approval" />
+                    <TranslationTable title="Pending Approval" dataType="pending"/>
                 </div>
                 <div>
                     {/*Visible to: */}
-                    <TranslationTable title="Approved"/>
+                    <TranslationTable title="Approved" dataType="approved"/>
                 </div>
 
 

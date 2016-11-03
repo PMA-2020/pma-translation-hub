@@ -8,6 +8,7 @@ import {
     REGISTER_USER_REQUEST,
     REGISTER_USER_FAILURE,
     REGISTER_USER_SUCCESS,
+    CLOSE_MENU
 } from '../constants/index'
 
 import { parseJSON } from '../utils/misc'
@@ -136,5 +137,13 @@ export function registerUser(email, password) {
             .catch(error => {
                 dispatch(registerUserFailure(error))
             })
+    }
+}
+
+export function closeMenu() {
+    return {
+        type: CLOSE_MENU,
+        // payload: false
+        // open: false
     }
 }

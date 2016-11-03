@@ -5,13 +5,14 @@ import * as actionCreators from '../actions/translationsUpdateDrawer'
 import TranslationsUpdateForm from './TranslationsUpdateForm'
 import RightNav from 'material-ui/Drawer'
 import Divider from 'material-ui/Divider'
-import FontAwesome from 'react-fontawesome'
+// import FontAwesome from 'react-fontawesome'
 
 
 function mapStateToProps(state) {
     return {
-        open: state.translationsUpdateDrawer.translationUpdateDrawerOpenState,
-        rowID: state.translationsUpdateDrawer.updateFormID
+        // open: state.translationsUpdateDrawer.translationUpdateDrawerOpenState,
+        rowID: state.translationsUpdateDrawer.updateFormID,
+        dataType: state.translationsUpdateDrawer.updateFormDataType
     }
 }
 
@@ -52,7 +53,7 @@ export default class TranslationsUpdateDrawer extends React.Component {
     render() {
         return (
             <div>
-                <RightNav openSecondary={true} width="30%" zDepth={3}>
+                <RightNav openSecondary={true} width="40%" zDepth={3}>
                 {/*<RightNav zDepth={3} openSecondary={true} open={this.state.isDrawerOpen} docked={false} className="app-drawer" onRequestChange={this.closeDrawer}>*/}
                 {/*<RightNav zDepth={3} openSecondary={true} docked={false} className="app-drawer" onRequestChange={this.closeDrawer}>*/}
                     <div style={{padding: "10px"}}>
@@ -63,7 +64,7 @@ export default class TranslationsUpdateDrawer extends React.Component {
                             {/*<div style={{float: 'left'}}>*/}
                                 {/*<h3 style={{float: 'left'}}>{this.props.title}</h3>*/}
                                 {/*<h4 style={{alignItems: 'left'}}>Update Row #{this.props.rowID}</h4>*/}
-                                <p style={{alignItems: 'left', verticalAlign: 'bottom'}}><strong>Update Translation {this.props.rowID}</strong></p>
+                                <p style={{alignItems: 'left', verticalAlign: 'bottom'}}><strong>Update Translation {this.props.rowID}</strong> <em>({this.props.dataType})</em></p>
                                 {/*{this.props.title}*/}
                             {/*</div>*/}
                             {/*<div style={{float: 'right'}}>*/}
@@ -98,13 +99,14 @@ export default class TranslationsUpdateDrawer extends React.Component {
 
 
 TranslationsUpdateDrawer.propTypes = {
-    open: React.PropTypes.bool,
-    rowID: React.PropTypes.number
+    // open: React.PropTypes.bool,
+    rowID: React.PropTypes.number,
+    dataType: React.PropTypes.string
     // title: React.PropTypes.string
 }
 
 
-// Reference to Mateiral UI
+// Reference to Material UI
 // Drawer.defaultProps = {
 //   disableSwipeToOpen: false,
 //   docked: true,

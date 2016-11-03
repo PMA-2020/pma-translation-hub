@@ -9,6 +9,7 @@ import {
     REGISTER_USER_FAILURE,
     REGISTER_USER_REQUEST,
     REGISTER_USER_SUCCESS,
+    CLOSE_MENU
 } from '../constants/index'
 
 const initialState = {
@@ -70,5 +71,9 @@ export default createReducer(initialState, {
             token: null,
             userName: null,
             registerStatusText: `Register Error: ${payload.status} ${payload.statusText}`,
+        }),
+    [CLOSE_MENU]: (state) =>
+        Object.assign({}, state, {
+            menuOpenState: false
         }),
 })
