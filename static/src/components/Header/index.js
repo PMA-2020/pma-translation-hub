@@ -77,51 +77,55 @@ export class Header extends Component {
         return (
             <header>
                 <LeftNav open={this.state.open}>
+                    <div>
+
+                        <div style={{display: 'flex', justifyContent: 'space-between', paddingLeft: "10px", paddingTop: "10px", paddingRight: "10px"}}>
+                            <p style={{alignItems: 'left', verticalAlign: 'bottom'}}><strong>PMA Translation Hub</strong></p>
+                            <p>
+                                <a href="" style={{hovorColor: "pink", active: "black"}}>
+                                    <i className="fa fa-times" onClick={(e) => this.closeNav(e)} name='close' size='2x'
+                                    style={{alignItems: 'right', verticalAlign: 'top', color: 'grey', hoverColor: "#00bcd4"}} />
+                                </a>
+                            </p>
+                        </div>
+                        <Divider />
+
                     {
-                        !this.props.isAuthenticated ?
-                            <div>
-                                <MenuItem onClick={() => this.dispatchNewRoute('/login')}>
-                                    Login
-                                </MenuItem>
-                                <MenuItem onClick={() => this.dispatchNewRoute('/register')}>
-                                    Register
-                                </MenuItem>
-                            </div>
+                    !this.props.isAuthenticated ?
+                        <div>
+                            <MenuItem onClick={() => this.dispatchNewRoute('/login')}>
+                                Login
+                            </MenuItem>
+                            <MenuItem onClick={() => this.dispatchNewRoute('/register')}>
+                                Register
+                            </MenuItem>
+                        </div>
 
-                            :
+                    :
 
-                            <div>
-                                <div style={{display: 'flex', justifyContent: 'space-between', paddingLeft: "10px", paddingTop: "10px", paddingRight: "10px"}}>
-                                    <p style={{alignItems: 'left', verticalAlign: 'bottom'}}><strong>PMA Translation Hub</strong></p>
-                                    <p>
-                                        <a href="" style={{hovorColor: "pink", active: "black"}}>
-                                            <i className="fa fa-times" onClick={(e) => this.closeNav(e)} name='close' size='2x'
-                                            style={{alignItems: 'right', verticalAlign: 'top', color: 'grey', hoverColor: "#00bcd4"}} />
-                                        </a>
-                                    </p>
-                                </div>
-                                <Divider />
+                        <div>
+                            <MenuItem onClick={() => this.dispatchNewRoute('/home')}>
+                                Home
+                            </MenuItem>
+                            <Divider />
 
-                                <MenuItem onClick={() => this.dispatchNewRoute('/home')}>
-                                    Home
-                                </MenuItem>
-                                <Divider />
+                            <MenuItem onClick={() => this.dispatchNewRoute('/users')}>
+                                Users
+                            </MenuItem>
+                            <Divider />
 
-                                <MenuItem onClick={() => this.dispatchNewRoute('/users')}>
-                                    Users
-                                </MenuItem>
-                                <Divider />
+                            <MenuItem onClick={() => this.dispatchNewRoute('/settings')}>
+                                Settings
+                            </MenuItem>
+                            <Divider />
 
-                                <MenuItem onClick={() => this.dispatchNewRoute('/settings')}>
-                                    Settings
-                                </MenuItem>
-                                <Divider />
-
-                                <MenuItem onClick={(e) => this.logout(e)}>
-                                    Logout
-                                </MenuItem>
-                            </div>
+                            <MenuItem onClick={(e) => this.logout(e)}>
+                                Logout
+                            </MenuItem>
+                        </div>
                     }
+
+                    </div>
                 </LeftNav>
                 <AppBar
                   title="PMA Translation Hub"

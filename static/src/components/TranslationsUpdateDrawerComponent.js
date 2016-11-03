@@ -45,7 +45,7 @@ export default class TranslationsUpdateDrawer extends React.Component {
     // }
 
     closeDrawer(e) {
-        e.preventDefault();
+        e.preventDefault()
         this.props.closeTranslationsUpdateDrawer()
         // this.setState({ isDrawerOpen: false })
     }
