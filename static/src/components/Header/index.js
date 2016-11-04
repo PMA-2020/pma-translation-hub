@@ -80,11 +80,11 @@ export class Header extends Component {
                     <div>
 
                         <div style={{display: 'flex', justifyContent: 'space-between', paddingLeft: "10px", paddingTop: "10px", paddingRight: "10px", background: "#00bcd4"}}>
-                            <p style={{alignItems: 'left', verticalAlign: 'bottom', color: "white", fontSize: "1.3em", paddingLeft: "5px"}}>PMA Translation Hub</p>
+                            <p style={{alignItems: 'left', verticalAlign: 'middle', color: "white", fontSize: "1.3em", paddingLeft: "5px"}}>PMA Translation Hub</p>
                             <p>
                                 <a href="" style={{hovorColor: "pink", active: "black"}}>
                                     <i className="fa fa-times" onClick={(e) => this.closeNav(e)} name='close' size='2x'
-                                    style={{alignItems: 'right', verticalAlign: 'top', color: '#cecece', hoverColor: "#00bcd4", fontSize: "1.2em"}} />
+                                    style={{alignItems: 'right', verticalAlign: 'middle', paddingTop: '2px', color: '#cecece', hoverColor: "#00bcd4", fontSize: "1.2em"}} />
                                 </a>
                             </p>
                         </div>
@@ -125,16 +125,15 @@ export class Header extends Component {
                             </MenuItem>
                         </div>
                     }
-
                     </div>
                 </LeftNav>
                 <AppBar
                   title="PMA Translation Hub"
                   onLeftIconButtonTouchTap={() => this.openNav()}
-                  iconElementRight={
-                      <FlatButton label="Home" onClick={() => this.dispatchNewRoute('/')} />
-                    }
                 />
+                  {/* # Other Options */}
+                  {/*iconElementRight={<FlatButton label="Home" onClick={() => this.dispatchNewRoute('/')} />}*/}
+                  {/*iconElementRight={<FlatButton label={<i className="fa fa-home" style={{verticalAlign: "middle", fontSize: "2em"}}/>} onClick={() => this.dispatchNewRoute('/')} />}*/}
             </header>
 
         )

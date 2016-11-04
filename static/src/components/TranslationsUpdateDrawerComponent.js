@@ -80,7 +80,7 @@ export default class TranslationsUpdateDrawer extends React.Component {
                                     {/*<i className="fa fa-times fa-2x" onClick={(e) => this.closeDrawer(e)} name='close' size='2x'*/}
                                         {/*style={{alignItems: 'right', verticalAlign: 'top', color: 'grey', hoverColor: "pink"}} />*/}
                                     <i className="fa fa-times" onClick={(e) => this.closeDrawer(e)} name='close' size='2x'
-                                        style={{alignItems: 'right', verticalAlign: 'top', color: 'grey', hoverColor: "#00bcd4"}} />
+                                        style={{alignItems: 'right', verticalAlign: 'middle', paddingTop: '0px', fontSize: "1.2em", color: 'grey', hoverColor: "#00bcd4"}} />
                                 </a></p>
                             {/*</div>*/}
                         </div>
