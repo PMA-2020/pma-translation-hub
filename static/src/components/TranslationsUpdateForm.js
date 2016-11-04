@@ -2,8 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actionCreators from '../actions/translationsUpdateDrawer'
-// # React-Bootstrap Version
-// import { FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap'
+// # React-Addons-Update Method of Input Control
 // import update from 'react-addons-update'
 
 
@@ -44,14 +43,6 @@ export default class TranslationsUpdateForm extends React.Component {
         return this.props.id
     }
 
-  // # React-Bootstrap Version
-  //   getValidationState() {
-  //       const length = this.state.value.length
-  //       if (length > 10) return 'success'
-  //       else if (length > 5) return 'warning'
-  //       else if (length > 0) return 'error'
-  // }
-
   // # React 'Controlled Component' model
   //   handleChange(e) {
   //       this.setState({ value: e.target.value })
@@ -79,21 +70,13 @@ export default class TranslationsUpdateForm extends React.Component {
         //noinspection CheckTagEmptyBody
         return (
             <div>
-                {/*ID: {this.props.id}.*/}
                 <form id={"TranslationUpdateForm-"+this.props.id} role="form" method='POST' action="">
-                    {/*<div className="input-group">*/}
-                        {/*<label>Question 1</label>*/}
-                    {/*</div>*/}
-                    {/*<div className="form-group">*/}
-                      {/*<span className="input-group-addon" id="basic-addon1">ID #</span>*/}
-                      {/*<input type="text" className="form-control" placeholder={this.props.id} value={this.props.id} disabled/>*/}
-                    {/*</div>*/}
                     <div className="form-group">
                       <label>Translation Type</label>
 
                       <input type="text" className="form-control" placeholder='Translation Type' value={this.props.formData.type} onChange={(e) => update(this.props.formData.type)}/>
                       {/*TODO: use 'update' from React-Addons-Update to make state changes the 'React' way. Using 'apply', 'set', or whatever*/}
-                      {/*React-Addons-Update Method of Input Control*/}
+                      {/*# React-Addons-Update Method of Input Control*/}
                       {/*<input type="text" className="form-control" placeholder='Translation Type' value={this.props.formData.type} onChange={(e) => update(this.props.formData.type, {$apply: function(x) {return "test";}})}/>*/}
                       {/*React 'Controlled Components' method*/}
                       {/*<input type="text" className="form-control" placeholder='Translation Type' value={this.state.value} onChange={this.handleChange}/>*/}
@@ -106,24 +89,8 @@ export default class TranslationsUpdateForm extends React.Component {
                       <input type="text" className="form-control" placeholder='Question Appearances' value={this.props.formData.questionAppearances} onChange={(e) => update(this.props.formData.questionAppearances)} />
                     </div>
                     {languages}
-
-
-
-
-                    {/* # React-Boostrap Version of Forms # */}
-                    {/*<FormGroup*/}
-                        {/*controlId="formBasicText"*/}
-                        {/*validationState={this.getValidationState()}*/}
-                    {/*>*/}
-                        {/*<ControlLabel>Working example with validation</ControlLabel>*/}
-                        {/*<FormControl*/}
-                            {/*type="text"*/}
-                            {/*value={this.state.value}*/}
-                            {/*placeholder="Enter text"*/}
-                            {/*onChange={this.handleChange}/>*/}
-                        {/*<FormControl.Feedback />*/}
-                        {/*<HelpBlock>Validation is based on string length.</HelpBlock>*/}
-                    {/*</FormGroup>*/}
+                    {/*<button type="submit" action="" className="btn btn-primary" style={{background: "#00bcd4"}}>Submit</button>*/}
+                    <button type="submit" action="" className="btn btn-primary">Submit</button>
                 </form>
 
             </div>

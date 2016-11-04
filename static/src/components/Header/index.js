@@ -114,10 +114,11 @@ export class Header extends Component {
                             </MenuItem>
                             <Divider />
 
-                            <MenuItem onClick={() => this.dispatchNewRoute('/settings')}>
-                                Settings
-                            </MenuItem>
-                            <Divider />
+                            {/* # Hiding temporarily until page is ready. */}
+                            {/*<MenuItem onClick={() => this.dispatchNewRoute('/settings')}>*/}
+                                {/*Settings*/}
+                            {/*</MenuItem>*/}
+                            {/*<Divider />*/}
 
                             <MenuItem onClick={(e) => this.logout(e)}>
                                 Logout
