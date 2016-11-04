@@ -9,7 +9,7 @@ import { bindActionCreators } from 'redux'
 import AppBar from 'material-ui/AppBar'
 import LeftNav from 'material-ui/Drawer'
 import MenuItem from 'material-ui/MenuItem'
-import FlatButton from 'material-ui/FlatButton'
+// import FlatButton from 'material-ui/FlatButton'
 import Divider from 'material-ui/Divider'
 import * as actionCreators from '../../actions/auth'
 
@@ -74,6 +74,9 @@ export class Header extends Component {
     }
 
     render() {
+        const iconColor = '#6b6b6b'
+        const iconMarginRight = '10px'
+
         return (
             <header>
                 <LeftNav open={this.state.open}>
@@ -84,7 +87,8 @@ export class Header extends Component {
                             <p>
                                 <a href="" style={{hovorColor: "pink", active: "black"}}>
                                     <i className="fa fa-times" onClick={(e) => this.closeNav(e)} name='close' size='2x'
-                                    style={{alignItems: 'right', verticalAlign: 'middle', paddingTop: '2px', color: '#cecece', hoverColor: "#00bcd4", fontSize: "1.2em"}} />
+                                    style={{alignItems: 'right', verticalAlign: 'middle', paddingTop: '2px', color: iconColor, hoverColor: "#00bcd4", fontSize: "1.2em"}} />
+                                    {/*style={{alignItems: 'right', verticalAlign: 'middle', paddingTop: '2px', color: '#cecece', hoverColor: "#00bcd4", fontSize: "1.2em"}} />*/}
                                 </a>
                             </p>
                         </div>
@@ -94,9 +98,11 @@ export class Header extends Component {
                     !this.props.isAuthenticated ?
                         <div>
                             <MenuItem onClick={() => this.dispatchNewRoute('/login')}>
+                                <i className="fa fa-sign-in" style={{verticalAlign: "middle", fontSize: "1.2em", marginRight: iconMarginRight, color: iconColor}}/>
                                 Login
                             </MenuItem>
                             <MenuItem onClick={() => this.dispatchNewRoute('/register')}>
+                                <i className="fa fa-child" style={{verticalAlign: "middle", fontSize: "1.2em", marginRight: iconMarginRight, color: iconColor}}/>
                                 Register
                             </MenuItem>
                         </div>
@@ -105,11 +111,13 @@ export class Header extends Component {
 
                         <div>
                             <MenuItem onClick={() => this.dispatchNewRoute('/home')}>
+                                <i className="fa fa-home" style={{verticalAlign: "middle", fontSize: "1.2em", marginRight: iconMarginRight, color: iconColor}}/>
                                 Home
                             </MenuItem>
                             <Divider />
 
                             <MenuItem onClick={() => this.dispatchNewRoute('/users')}>
+                                <i className="fa fa-users" style={{verticalAlign: "middle", fontSize: "1em", marginRight: iconMarginRight, color: iconColor}}/>
                                 Users
                             </MenuItem>
                             <Divider />
@@ -121,6 +129,7 @@ export class Header extends Component {
                             {/*<Divider />*/}
 
                             <MenuItem onClick={(e) => this.logout(e)}>
+                                <i className="fa fa-sign-out" style={{verticalAlign: "middle", fontSize: "1.2em", marginRight: iconMarginRight, color: iconColor}}/>
                                 Logout
                             </MenuItem>
                         </div>

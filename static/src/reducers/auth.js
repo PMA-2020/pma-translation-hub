@@ -23,6 +23,13 @@ const initialState = {
     registerStatusText: null,
 }
 
+var getRegisterStatusText = (payload) => {
+    if (typeof payload === 'undefined')
+        return `Register Error: ${payload.status} ${payload.statusText}`
+    else
+        return 'Registration error. This e-mail address may already be registered. If this is not the case, please contact the administrator.'
+}
+
 export default createReducer(initialState, {
     [LOGIN_USER_REQUEST]: (state) =>
         Object.assign({}, state, {
@@ -70,7 +77,7 @@ export default createReducer(initialState, {
             isAuthenticated: false,
             token: null,
             userName: null,
-            registerStatusText: `Register Error: ${payload.status} ${payload.statusText}`,
+            registerStatusText: getRegisterStatusText(payload)
         }),
     [CLOSE_MENU]: (state) =>
         Object.assign({}, state, {
