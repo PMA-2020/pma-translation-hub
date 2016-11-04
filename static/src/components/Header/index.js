@@ -79,12 +79,12 @@ export class Header extends Component {
                 <LeftNav open={this.state.open}>
                     <div>
 
-                        <div style={{display: 'flex', justifyContent: 'space-between', paddingLeft: "10px", paddingTop: "10px", paddingRight: "10px"}}>
-                            <p style={{alignItems: 'left', verticalAlign: 'bottom'}}><strong>PMA Translation Hub</strong></p>
+                        <div style={{display: 'flex', justifyContent: 'space-between', paddingLeft: "10px", paddingTop: "10px", paddingRight: "10px", background: "#00bcd4"}}>
+                            <p style={{alignItems: 'left', verticalAlign: 'bottom', color: "white", fontSize: "1.3em", paddingLeft: "5px"}}>PMA Translation Hub</p>
                             <p>
                                 <a href="" style={{hovorColor: "pink", active: "black"}}>
                                     <i className="fa fa-times" onClick={(e) => this.closeNav(e)} name='close' size='2x'
-                                    style={{alignItems: 'right', verticalAlign: 'top', color: 'grey', hoverColor: "#00bcd4"}} />
+                                    style={{alignItems: 'right', verticalAlign: 'top', color: '#cecece', hoverColor: "#00bcd4", fontSize: "1.2em"}} />
                                 </a>
                             </p>
                         </div>
