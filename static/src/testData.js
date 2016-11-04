@@ -151,6 +151,7 @@ export const data = {
             english: "Vestibulum et aliquet justo, et ornare odio.",
             swahili: "Vestibulum et aliquet justo, et ornare odio. (in Swahili!)",
             french: "Vestibulum et aliquet justo, et ornare odio. (in French!)",
+            afrikaans: "Hello there in Afrikaans."
         }
     },
     "4": {
@@ -181,6 +182,16 @@ export const data = {
             english: "Suspendisse laoreet sed lectus eget maximus.",
             swahili: "Suspendisse laoreet sed lectus eget maximus. (in Swahili!)",
             french: "Suspendisse laoreet sed lectus eget maximus. (in French!)",
+        }
+    },
+    "1000": {
+        type: "Constraint",
+        questionAppearances: "FQ107, SQ303, SQ304, Selection007, HQ208",
+        status: "new",
+        languages: {
+            english: "Suspendisse laoreet sed lectus eget maximus.",
+            swahili: "Suspendisse laoreet sed lectus eget maximus. (in Swahili!)",
+            russian: "Hello there in Russian.",
         }
     }
 }
