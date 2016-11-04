@@ -130,6 +130,10 @@
     "mocha": "^3.1.2",
     "react-bootstrap-table": "git://github.com/joeflack4/react-bootstrap-table.git#develop"
   },
+  "unusedDependenciesForWhateverReasons": {
+    "react-bootstrap": "^0.30.6",
+    "react-fontawesome": "^1.2.0"
+  },
   "unmetPeerDependenciesRequiringAlternateVersionsOfExistingDependencies": {
     "react-forms@2.0.0-beta9": {
       "react": "^0.14.0"
@@ -146,8 +150,6 @@
     }
   },
   "dependencies": {
-    "docco": "^0.7.0",
-    "react-bootstrap": "^0.30.6",
-    "react-fontawesome": "^1.2.0"
+    "docco": "^0.7.0"
   }
 }
