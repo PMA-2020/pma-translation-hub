@@ -232,11 +232,12 @@ export default class TranslationTable extends React.Component {
 
                 <h1>{this.props.title}</h1>
                 <BootstrapTable data={this.data} keyField={fields[0][0]} options={this.options} striped={true} hover={true} pagination={true} search={true}
-                                clearSearch={true} insertRow={true} exportCSV={true} bordered={false} height="auto">
+                                clearSearch={true} exportCSV={true} bordered={false} height="auto">
                                 {/* # Other option for table properties. */}
                                 {/*{height="100%"}*/}
                                 {/*maxheight={300}*/}
                                 {/*columnFilter={true}*/}
+                                {/*insertRow={true}*/}
 
                     { fields.map(([field, label]) => <TableHeaderColumn dataField={ field }>{ label }</TableHeaderColumn>) }
 
