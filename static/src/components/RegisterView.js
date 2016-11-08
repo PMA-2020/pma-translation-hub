@@ -1,25 +1,24 @@
 /* eslint camelcase: 0, no-underscore-dangle: 0 */
+import React from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import TextField from 'material-ui/TextField'
+import RaisedButton from 'material-ui/RaisedButton'
+import Paper from 'material-ui/Paper'
 
-import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
-import Paper from 'material-ui/Paper';
+import * as actionCreators from '../actions/auth'
 
-import * as actionCreators from '../actions/auth';
-
-import { validateEmail } from '../utils/misc';
+import { validateEmail } from '../utils/misc'
 
 function mapStateToProps(state) {
     return {
         isRegistering: state.auth.isRegistering,
         registerStatusText: state.auth.registerStatusText,
-    };
+    }
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators(actionCreators, dispatch);
+    return bindActionCreators(actionCreators, dispatch)
 }
 
 const style = {
@@ -29,14 +28,14 @@ const style = {
     width: '100%',
     textAlign: 'center',
     display: 'inline-block',
-};
+}
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class RegisterView extends React.Component {
 
     constructor(props) {
-        super(props);
-        const redirectRoute = '/login';
+        super(props)
+        const redirectRoute = '/login'
         this.state = {
             email: '',
             password: '',
@@ -44,73 +43,73 @@ export default class RegisterView extends React.Component {
             password_error_text: null,
             redirectTo: redirectRoute,
             disabled: true,
-        };
+        }
     }
 
     isDisabled() {
-        let email_is_valid = false;
-        let password_is_valid = false;
+        let email_is_valid = false
+        let password_is_valid = false
 
         if (this.state.email === '') {
             this.setState({
                 email_error_text: null,
-            });
+            })
         } else if (validateEmail(this.state.email)) {
-            email_is_valid = true;
+            email_is_valid = true
             this.setState({
                 email_error_text: null,
-            });
+            })
 
         } else {
             this.setState({
                 email_error_text: 'Sorry, this is not a valid email',
-            });
+            })
         }
 
         if (this.state.password === '' || !this.state.password) {
             this.setState({
                 password_error_text: null,
-            });
+            })
         } else if (this.state.password.length >= 6) {
-            password_is_valid = true;
+            password_is_valid = true
             this.setState({
                 password_error_text: null,
-            });
+            })
         } else {
             this.setState({
                 password_error_text: 'Your password must be at least 6 characters',
-            });
+            })
 
         }
 
         if (email_is_valid && password_is_valid) {
             this.setState({
                 disabled: false,
-            });
+            })
         }
 
     }
 
     changeValue(e, type) {
-        const value = e.target.value;
-        const next_state = {};
-        next_state[type] = value;
+        const value = e.target.value
+        const next_state = {}
+        next_state[type] = value
         this.setState(next_state, () => {
-            this.isDisabled();
-        });
+            this.isDisabled()
+        })
     }
 
     _handleKeyPress(e) {
         if (e.key === 'Enter') {
             if (!this.state.disabled) {
-                this.login(e);
+                this.login(e)
             }
         }
     }
 
     login(e) {
-        e.preventDefault();
-        this.props.registerUser(this.state.email, this.state.password, this.state.redirectTo);
+        e.preventDefault()
+        this.props.registerUser(this.state.email, this.state.password, this.state.redirectTo)
     }
 
     render() {
@@ -156,7 +155,7 @@ export default class RegisterView extends React.Component {
                 </Paper>
 
             </div>
-        );
+        )
 
     }
 }
@@ -164,4 +163,4 @@ export default class RegisterView extends React.Component {
 RegisterView.propTypes = {
     registerUser: React.PropTypes.func,
     registerStatusText: React.PropTypes.string,
-};
+}

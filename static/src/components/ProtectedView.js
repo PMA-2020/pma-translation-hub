@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import * as actionCreators from '../actions/data'
 import TranslationTable from './TranslationTableComponent.js'
 import TranslationUpdateDrawer from './TranslationsUpdateDrawerComponent'
+import SetUpdateFormPrompt from './setUpdateFormPrompt'
 // import TranslationsUpdateDrawerToggler from './TranslationsUpdateDrawerTogglerComponent.js'
 // Needed for 'RightNav', which I should probably put in its own component and maybe call 'UpdatePane'
 //TODO: Update Pane - The following two need to be uncommented when ready to work on this.
@@ -18,7 +19,9 @@ function mapStateToProps(state) {
         token: state.auth.token,
         loaded: state.data.loaded,
         isFetching: state.data.isFetching,
-        open: state.translationsUpdateDrawer.translationUpdateDrawerOpenState
+        open: state.translationsUpdateDrawer.translationUpdateDrawerOpenState,
+        setUpdateFormPromptID: state.translationsUpdateDrawer.setUpdateFormID,
+        setUpdateFormPromptOpen: state.translationsUpdateDrawer.setUpdateFormPromptOpenState
     }
 }
 
@@ -64,7 +67,11 @@ export default class ProtectedView extends React.Component {
     render() {
         return (
             <div>
+
+                { this.props.setUpdateFormPromptOpen ? <SetUpdateFormPrompt/> : <div></div> }
+
                 { this.props.open ? <TranslationUpdateDrawer/> : <div></div> }
+
                 {/*TODO: Fix lazy loading*/}
                 {/*{!this.props.loaded*/}
                     {/*Note: For some reason this still shows even when loaded.*/}
@@ -140,7 +147,9 @@ ProtectedView.propTypes = {
     userName: React.PropTypes.string,
     data: React.PropTypes.any,
     token: React.PropTypes.string,
-    open: React.PropTypes.bool
+    open: React.PropTypes.bool,
+    setUpdateFormPromptID: React.PropTypes.number,
+    setUpdateFormPromptOpen: React.PropTypes.bool
 }
 
 

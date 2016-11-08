@@ -5,7 +5,7 @@
 export const data = {
     "831": {
         type: "Label",
-        questionAppearances: "FQ107, SQ303, SQ304",
+        appearances: "FQ107, SQ303, SQ304",
         status: "new",
         languages: {
             english: "Hello world!",
@@ -15,7 +15,7 @@ export const data = {
     },
     "832": {
         type: "Hint",
-        questionAppearances: "FQ108, SQ209, SQ304",
+        appearances: "FQ108, SQ209, SQ304",
         status: "new",
         "languages": {
             "english": "Hello you!",
@@ -25,7 +25,7 @@ export const data = {
     },
     "833": {
         type: "Constraint",
-        questionAppearances: "FQ107, SQ303, SQ828",
+        appearances: "FQ107, SQ303, SQ828",
         status: "new",
         languages: {
             english: "Hello mate!",
@@ -35,7 +35,7 @@ export const data = {
     },
     "834": {
         type: "Label",
-        questionAppearances: "FQ256, SQ303, SQ304",
+        appearances: "FQ256, SQ303, SQ304",
         status: "new",
         languages: {
             english: "Hello there!",
@@ -45,7 +45,7 @@ export const data = {
     },
     "835": {
         type: "Hint",
-        questionAppearances: "FQ107, SQ512",
+        appearances: "FQ107, SQ512",
         status: "new",
         languages: {
             english: "Hello gov!",
@@ -55,7 +55,7 @@ export const data = {
     },
     "836": {
         type: "Constraint",
-        questionAppearances: "FQ107, SQ303, SQ304",
+        appearances: "FQ107, SQ303, SQ304",
         status: "new",
         languages: {
             english: "Hey ya'll!",
@@ -65,7 +65,7 @@ export const data = {
     },
     "323": {
         type: "Label",
-        questionAppearances: "SQ303, SQ304, Listing006",
+        appearances: "SQ303, SQ304, Listing006",
         status: "pending",
         languages: {
             english: "The brown fox",
@@ -75,7 +75,7 @@ export const data = {
     },
     "687": {
         type: "Hint",
-        questionAppearances: "Selection011b, SQ303, SQ304",
+        appearances: "Selection011b, SQ303, SQ304",
         status: "pending",
         "languages": {
             "english": "jumped over",
@@ -85,7 +85,7 @@ export const data = {
     },
     "229": {
         type: "Constraint",
-        questionAppearances: "FQ107, FQ108b, SQ304",
+        appearances: "FQ107, FQ108b, SQ304",
         status: "pending",
         languages: {
             english: "the lazy dog.",
@@ -95,7 +95,7 @@ export const data = {
     },
     "67": {
         type: "Label",
-        questionAppearances: "FQ107, SQ303",
+        appearances: "FQ107, SQ303",
         status: "pending",
         languages: {
             english: "Lorem ipsum dolor sit amet,",
@@ -105,7 +105,7 @@ export const data = {
     },
     "221": {
         type: "Hint",
-        questionAppearances: "SQ304",
+        appearances: "SQ304",
         status: "pending",
         languages: {
             english: "consectetur adipiscing elit.",
@@ -115,7 +115,7 @@ export const data = {
     },
     "437": {
         type: "Constraint",
-        questionAppearances: "FQ107, SQ327, Reinterview002, Listing002",
+        appearances: "FQ107, SQ327, Reinterview002, Listing002",
         status: "pending",
         languages: {
             english: "Curabitur finibus enim quis tortor aliquet, vel rhoncus ex mattis.",
@@ -125,7 +125,7 @@ export const data = {
     },
     "1": {
         type: "Label",
-        questionAppearances: "HQ428b",
+        appearances: "HQ428b",
         status: "approved",
         languages: {
             english: "This is our first re-usable text!",
@@ -135,7 +135,7 @@ export const data = {
     },
     "2": {
         type: "Hint",
-        questionAppearances: "FQ108, HQ001, HQ133",
+        appearances: "FQ108, HQ001, HQ133",
         status: "approved",
         "languages": {
             "english": "Sed tellus enim, malesuada eu sapien et, sollicitudin interdum libero.",
@@ -145,7 +145,7 @@ export const data = {
     },
     "3": {
         type: "Constraint",
-        questionAppearances: "FQ107, SQ303",
+        appearances: "FQ107, SQ303",
         status: "approved",
         languages: {
             english: "Vestibulum et aliquet justo, et ornare odio.",
@@ -156,7 +156,7 @@ export const data = {
     },
     "4": {
         type: "Label",
-        questionAppearances: "FQ107, SQ303, HQ006",
+        appearances: "FQ107, SQ303, HQ006",
         status: "approved",
         languages: {
             english: "Nullam vulputate ante ante, at auctor dolor facilisis eu.",
@@ -166,7 +166,7 @@ export const data = {
     },
     "5": {
         type: "Hint",
-        questionAppearances: "FQ107, HQ111, SQ304",
+        appearances: "FQ107, HQ111, SQ304",
         status: "approved",
         languages: {
             english: "Fusce ornare pharetra congue.",
@@ -176,7 +176,7 @@ export const data = {
     },
     "6": {
         type: "Constraint",
-        questionAppearances: "FQ107, SQ303, SQ304, Selection007, HQ208",
+        appearances: "FQ107, SQ303, SQ304, Selection007, HQ208",
         status: "approved",
         languages: {
             english: "Suspendisse laoreet sed lectus eget maximus.",
@@ -186,7 +186,7 @@ export const data = {
     },
     "1000": {
         type: "Constraint",
-        questionAppearances: "FQ107, SQ303, SQ304, Selection007, HQ208",
+        appearances: "FQ107, SQ303, SQ304, Selection007, HQ208",
         status: "new",
         languages: {
             english: "Suspendisse laoreet sed lectus eget maximus.",

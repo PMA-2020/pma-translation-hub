@@ -122,9 +122,9 @@ Object.entries(data).forEach(([entryKey]) => {
 @connect(mapStateToProps, mapDispatchToProps)
 export default class TranslationTable extends React.Component {
     constructor(props) {
-        super(props);
-        this.openDrawer = this.openDrawer.bind(this);
-        this.options.onRowClick = this.options.onRowClick.bind(this);
+        super(props)
+        this.openDrawer = this.openDrawer.bind(this)
+        this.options.onRowClick = this.options.onRowClick.bind(this)
     }
 
     componentDidMount() {
@@ -153,15 +153,21 @@ export default class TranslationTable extends React.Component {
         this.props.openTranslationsUpdateDrawer()
     }
 
+    openSetUpdateFormPrompt(rowID) {
+        this.props.openSetUpdateFormPrompt(rowID)
+    }
+
     setUpdateForm(rowID) {
         this.props.setUpdateForm(rowID)
     }
 
     options = {
         onRowClick: function(row) {
-            // console.log(row.id)
             this.openDrawer()
-            this.setUpdateForm(row.id)
+            if (this.props.open === false)
+                this.setUpdateForm(row.id)
+            else
+                this.openSetUpdateFormPrompt(row.id)
         }
     }
 
@@ -212,7 +218,7 @@ export default class TranslationTable extends React.Component {
     languages = this.fetchLanguages()
 
     render() {
-        const fields = [['id', '#'], ['type', 'Type'], ['questionAppearances', 'Appearances']]
+        const fields = [['id', '#'], ['type', 'Type'], ['appearances', 'Appearances']]
         // # Push language identifier and label to the list of fields to be rendered.
         for (let language of this.languages) {
             fields.push([language, _.capitalize(language)])
@@ -254,5 +260,6 @@ TranslationTable.propTypes = {
     // token: React.PropTypes.string,
     open: React.PropTypes.bool,
     openTranslationsUpdateDrawer: React.PropTypes.func,
-    setUpdateForm: React.PropTypes.func
+    setUpdateForm: React.PropTypes.func,
+    setUpdateFormPrompt: React.PropTypes.func
 }
